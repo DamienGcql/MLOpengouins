@@ -2,14 +2,40 @@
 Load and preprocess data.
 """
 
+import os
 import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import plotly.express as px
 from sklearn.model_selection import train_test_split
 
 
-def load_data(path: str) -> pd.DataFrame:
-    """Load data from seaborn data,
-    put it in cache and return a DataFrame."""
-    pass
+def load_data(path: str = "data/pingouins.csv") -> pd.DataFrame:
+
+    import os
+    import pandas as pd
+    import seaborn as sns
+
+# On crée le bon dossier
+    os.makedirs("data", exist_ok=True)
+
+    if os.path.exists(path):
+        pingouins = pd.read_csv(path)
+        print(f"Chargé depuis {path}")
+    else:
+        print("Première fois → téléchargement depuis seaborn...")
+        pingouins = sns.load_dataset("penguins")
+        
+        # On supprime la colonne island
+        pingouins.drop(columns=["island"], inplace=True)
+        
+        # On sauvegarde pour les prochaines fois
+        pingouins.to_csv(path, index=False)
+        pingouins = pd.read_csv(path)
+        print(f"Sauvegardé dans {path}")
+
+    return pingouins
 
 
 def get_X_y(
