@@ -4,11 +4,14 @@ version = "0.1.0"
 description = "Train & Registry ML Model on pengouins dataset"
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = "<4.0,>=3.11"
 dependencies = [
     "pandas (>=2.3.3,<3.0.0)",
     "seaborn (>=0.13.2,<0.14.0)",
-    "scikit-learn (>=1.7.2,<2.0.0)"
+    "scikit-learn (>=1.7.2,<2.0.0)",
+    "plotly (>=6.5.0,<7.0.0)",
+    "loguru (>=0.7.3,<0.8.0)",
+    "mlflow (>=3.6.0,<4.0.0)"
 ]
 
 

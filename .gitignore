@@ -1,6 +1,13 @@
-data
+data/*
+!data/.gitkeep
 models
 
 # Python cache files
 __pycache__/
 *.pyc
+
+poetry.lock
+
+# Mlflow
+mlruns
+mlartifacts
