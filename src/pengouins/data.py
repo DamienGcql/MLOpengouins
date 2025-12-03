@@ -13,6 +13,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer, make_column_selector
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.impute import SimpleImputer
+from sklearn.base import BaseEstimator
 
 from pengouins.registry import save_model, load_model
 
@@ -58,10 +59,10 @@ def split_data(
     return X_train, X_test, y_train, y_test
 
 def preprocess_data(X: pd.DataFrame
-                    ,fit = True) -> pd.DataFrame:
+                    ,preprocessor: BaseEstimator = None) -> tuple[BaseEstimator, pd.DataFrame]:
     """Preprocess data: handle missing values, encode categorical variables, scale numerical features."""
 
-    if fit :
+    if not preprocessor:
         logger.info("Initializing Preprocessor ...")
         num_pipe = Pipeline(steps=[
             ('imputer', SimpleImputer(strategy='median')),
@@ -78,12 +79,12 @@ def preprocess_data(X: pd.DataFrame
 
         preprocessor.fit(X)
         
-        save_model(preprocessor,"preprocessor")
-    else :   
-        preprocessor = load_model("preprocessor")
-        
+        save_model(model=preprocessor
+                   , model_name="preprocessor"
+                   )
     X_preproc = preprocessor.transform(X)
-    return X_preproc
+    
+    return preprocessor, X_preproc  
     
 
 

@@ -94,7 +94,7 @@ echo $MODEL_STORAGE_MODE
 
 **Important:** Don't commit your `.env` file!
 
-Add to `.gitignore`:
+Add to `.gitignore`: 
 ```bash
 # Environment variables
 .env

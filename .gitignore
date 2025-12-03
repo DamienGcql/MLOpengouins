@@ -11,3 +11,7 @@ poetry.lock
 # Mlflow
 mlruns
 mlartifacts
+
+# Environment files
+.env
+.envrc
