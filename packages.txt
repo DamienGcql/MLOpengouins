@@ -1,5 +1,0 @@
-# Fichier pour Streamlit Cloud
-# Liste des packages système nécessaires (optionnel)
-
-# Aucun package système requis pour cette application
-
