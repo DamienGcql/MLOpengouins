@@ -5,13 +5,31 @@ models
 # Python cache files
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
 
 poetry.lock
 
 # Mlflow
 mlruns
 mlartifacts
+mlflow.db
 
 # Environment files
 .env
 .envrc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
